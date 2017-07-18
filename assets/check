@@ -11,6 +11,7 @@ touch $logs
 payload=$TMPDIR/echo-request
 cat > $payload <&0
 
-versions=$(jq -r '.source.versions // ""' < $payload)
+ref=$(date '+%Y.%M.%d-%H:%M:%S')
+versions='[{"ref": "'$ref'"}]'
 echo $versions >> $logs
 echo $versions >&3
